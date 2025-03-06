@@ -1,0 +1,107 @@
+# Fundamental Security Concepts
+
+## Confidentiality, Integrity, and Availability (CIA Triad)
+
+The CIA triad forms the cornerstone of information security, guiding policies and security measures.
+
+    - **Confidentiality**: Ensuring information is accessible only to authorized individuals
+        - **Techniques**: Encryption, Access Controls, Data Masking
+
+    - **Integrity**: Integrity ensures the accuracy and reliability of data by preventing unauthorized alterations
+        - **Techniques**: Hashing, digital signatures, and access control measures
+
+    - **Availability**: Ensuring authorized users have reliable and timely access to information and resources
+        - **Techniques**: Redundancy, failover systems, backup systems, and regular maintenance
+
+
+### CIA Triad Diagram
+
+```mermaid
+graph TD
+  Security --> Confidentiality
+  Security --> Integrity
+  Security --> Availability
+  Confidentiality --> Encryption
+  Integrity --> Hashing
+  Availability --> Redundancy
+```
+
+## Non-repudiation
+
+Non-repudiation ensures that actions or transactions cannot be denied by the parties involved.
+
+    * Achieved through audit logging, digital signatures, and certificates.
+
+
+## Authentication, Authorization, and Accounting (AAA)
+
+    - **Authentication**: Verifying identity of users or systems.
+        -**Methods**: passwords, biometrics, tokens
+
+    
+    - **Authorization**: Granting access based on confirmed identity.
+        - **Methods**: Access Control Lists (ACLs), role-based access control (RBAC), or attribute-based access control (ABAC)
+
+    
+    - **Accounting**: Tracking user actions for auditing and analysis
+        - **Methods**: Logs including user access logs, session tracking, resource utilization.
+
+
+### AAA Process
+
+```mermaid
+
+flowchart LR
+User[User] --> Auth(Authentication)
+Auth -->|Success| Author(Authorization)
+Auth -->|Fail| Deny[Access Denied]
+Author -->|Granted| Acc(Accounting)
+Author -->|Denied| Deny
+Acc --> Permit[Access Granted & Logged]
+```
+
+
+## Gap Analysis
+
+A systematic evalutation process to determine the difference between the current security state and the desired security posture.
+
+    - * Helps identify security improvements needed and prioritize resources.
+
+
+## Zero Trust Security
+
+Zero Trust is a security model that requires verification for all resources and assumes no implicit trust.
+
+    - **Control Plane Components**:
+        - Adaptive Identity
+        - Policy-driven access control
+        - Policy Administrator
+        - Policy Engine
+
+    - **Data Plane Components**:
+        - Policy Enforcement Points (PEP)
+        - Subject/System validation
+
+
+### Zero Trust Architecture
+
+```mermaid
+flowchart TD
+User -->|Access Request| PE[Policy Enforcement Point]
+PolicyEngine[Policy Engine] <-->|Policy check| PolicyAdmin[Policy Administrator]
+PEP[Policy Enforcement Point] -->|Request Verification| PE[Policy Engine]
+PE -->|Decision| PEP
+PEP -->|Allow| Resource[Protected Resource]
+PEP -->|Deny| DenyAccess[Access Denied]
+
+```
+
+## Deception and Disruption Technologies
+
+Technologies designed to mislead attackers and reduce likelihood of successful breaches.
+
+    - **Honeypot**: Decoy system designed to attract attackers
+    - **Honeynet**: Network of honeypots
+    - **Honeyfile**: Fake file designed to detect access or theft attempts
+    - **Honeytoken**: Decoy credential or data used to detect unauthorized access
+
